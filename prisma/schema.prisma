@@ -1,0 +1,41 @@
+// Schema do banco de dados - Biblioteca de AlexandrIA
+// SQLite em desenvolvimento. Para Postgres, troque o provider e o datasource url.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int           @id @default(autoincrement())
+  email         String        @unique
+  passwordHash  String?
+  profilePicUrl String?
+  planStatus    String        @default("free")
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  chatSessions  ChatSession[]
+}
+
+model ChatSession {
+  id         Int           @id @default(autoincrement())
+  userId     Int?
+  sessionKey String?       @unique
+  user       User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages   ChatMessage[]
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+}
+
+model ChatMessage {
+  id        Int         @id @default(autoincrement())
+  sessionId Int
+  session   ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  role      String
+  content   String
+  createdAt DateTime    @default(now())
+}

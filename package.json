@@ -1,0 +1,48 @@
+{
+  "name": "biblioteca-de-alexandrIA",
+  "version": "4.0.0",
+  "private": true,
+  "description": "Biblioteca de AlexandrIA — assistente literário com IA. Next.js (React) + API Routes + Prisma/SQLite + Ollama Cloud + Tailwind CSS.",
+  "scripts": {
+    "dev": "node scripts/start.js",
+    "dev:app": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "stop": "node scripts/stop.js",
+    "restart": "node scripts/restart.js",
+    "setup": "node scripts/setup.js",
+    "db:push": "prisma db push",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:studio": "prisma studio"
+  },
+  "keywords": [
+    "nextjs",
+    "react",
+    "tailwindcss",
+    "prisma",
+    "sqlite",
+    "ollama",
+    "chat",
+    "books",
+    "library",
+    "ai"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "^6.19.3",
+    "axios": "^1.20.0",
+    "bcryptjs": "^3.0.3",
+    "jose": "^6.2.12",
+    "next": "^16.4.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "zustand": "^5.0.15"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "prisma": "^6.19.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
